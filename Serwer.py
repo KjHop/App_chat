@@ -25,13 +25,13 @@ def listener(client, address):
             clients.remove(client)
             client.close()
 
-host = socket.gethostbyaddr(socket.gethostname())
+host = socket.gethostbyname(socket.gethostname())
 port = 12345
 
 s = socket.socket()
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind((host,port))
-s.listen(3)
+s.listen(5)
 th = []
 
 while True:

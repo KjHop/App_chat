@@ -3,12 +3,12 @@ import sys
 from threading import Thread
 
 s = socket.socket()
-host = "34.206.101.184"
+host = socket.gethostname()
 port = 12345
-name = input('Wpisz nick: ')
+nick = raw_input('Wpisz nick: ')
 s.connect((host, port))
 def send(str):
-   s.send("{}: {}".format(name, str).encode('utf-8'))
+   s.send("{}: {}".format(nick, str).encode('utf-8'))
 
 def recv():
     while True:
@@ -19,7 +19,7 @@ def recv():
 Thread(target=recv).start()
 while 2:
 
-   r = input(': ')
+   r = raw_input(': ')
    send(r)
    if r == "/close":
       s.close()
